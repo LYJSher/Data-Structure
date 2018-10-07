@@ -1,18 +1,18 @@
 #include<stdio.h>
 #define MAXSIZE 50
-/*
-    ���Ϊ�ձ����ش���
-    ����˳�������Ԫ��С�ڵ�ǰ��Сֵ��������Сֵ����¼��Сֵ�±�
-    �����һ��Ԫ�����Сֵ�±�Ԫ��
-    ˳�������-1
-
-*/
 
 typedef struct{
     int data[MAXSIZE];
     int length;
 }Sq;
 
+/*
+    如果为空表返回错误
+    遍历顺序表，若元素小于当前最小值，更新最小值并记录最小值下标
+    用最后一个元素填补最小值下标元素
+    顺序表长度-1
+
+*/
 int deleteMin(Sq *L, int *e){
     int pos = 0;
     int min;

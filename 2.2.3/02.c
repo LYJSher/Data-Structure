@@ -1,18 +1,14 @@
 #include <stdio.h>
 #define MAXSIZE 50
-/*
-    Èç¹û±íÖĞÖ»ÓĞÒ»¸öÔªËØ£¬Ö±½Óreturn
-    µ±i<length/2Ê±£¬»¥»»L.data[i]ºÍL.data[length-i-1]µÄÖµ
-*/
-
-// ×¢ÒâÏÂ±ê±ä»¯£¬ÇëÒ»´ÎĞ´ÕıÈ·£¡£¡£¡£¡£¡
-// lengthÊÇLµÄ³ÉÔ±£¬¼ÇµÃÓÃL->length
 
 typedef struct{
     int data[MAXSIZE];
     int length;
 }Sq;
-
+/*
+    å¦‚æœè¡¨ä¸­åªæœ‰ä¸€ä¸ªå…ƒç´ ï¼Œç›´æ¥return
+    å½“i<length/2æ—¶ï¼Œäº’æ¢L.data[i]å’ŒL.data[length-i-1]çš„å€¼
+*/
 void rev(Sq *L){
     int temp;
     if(L->length == 1)
@@ -23,6 +19,8 @@ void rev(Sq *L){
         L->data[L->length-i-1] = temp;
     }
 }
+// æ³¨æ„ä¸‹æ ‡å˜åŒ–ï¼Œè¯·ä¸€æ¬¡å†™æ­£ç¡®ï¼ï¼ï¼ï¼ï¼
+// lengthæ˜¯Lçš„æˆå‘˜ï¼Œè®°å¾—ç”¨L->length
 
 int main(){
     Sq L1, L2;

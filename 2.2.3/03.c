@@ -1,15 +1,16 @@
 #include <stdio.h>
 #define MAXSIZE 50
-/*
-    ����˳��������ǰΪx
-    �ҵ�ĩβ��һ����Ϊx��Ԫ�ظ��ǵ�ǰֵ
-    �ʵ��޸�length��ֵ
-*/
+
 typedef struct{
     int data[MAXSIZE];
     int length;
 }Sq;
 
+/*
+    遍历顺序表如果当前为x
+    找到末尾第一个不为x的元素覆盖当前值
+    适当修改length的值
+*/
 void delx(Sq *L, int x){
     for(int i=0; i<L->length; i++){
         if(L->data[i] == x){
@@ -17,17 +18,17 @@ void delx(Sq *L, int x){
             while(L->data[j] == x && j>i)
                 j--;
             L->data[i] = L->data[j];
-            L->length = L->length - 1 - (L->length-1-j); // L->length-1-j: ĩβֵΪx�ĸ���
+            L->length = L->length - 1 - (L->length-1-j); // L->length-1-j: 末尾值为x的个数
         }
     }
 }
 /*
-    ��kԪ�ؼ�¼��Ϊx�ĸ���
-    ��˳��ɨ��˳���������Ϊx��Ԫ�طŵ�ǰ��k��λ��
-    ����k��Ϊ����
+    用k元素记录不为x的个数
+    并顺序扫描顺序表，将不为x的元素放到前面k个位置
+    最终k即为表长
 */
 void delx1(Sq *L, int x){
-    int k = 0; // ��¼��Ϊx�ĸ���
+    int k = 0; // 记录不为x的个数
     for(int i=0; i<L->length; i++){
         if(L->data[i] != x){
             L->data[k] = L->data[i];
@@ -38,9 +39,9 @@ void delx1(Sq *L, int x){
 }
 
 /*
-    ��k��¼x��Ԫ�ظ���
-    Ԫ�ز�Ϊx��x��ǰ�ƶ�k��λ��
-    ����length-k��Ϊ����
+    用k记录x的元素个数
+    元素不为x则将x向前移动k的位置
+    最终length-k即为表长
 */
 void delx2(Sq *L, int x){
     int k = 0;
@@ -68,6 +69,6 @@ int main(){
     return 0;
 }
 /*
-    note: ���û��1����ʾ������˼·Ӧ����
-    ��Ϊɾ����Ԫ�صĿռ��ܿ�����������һ��Ԫ��֮ǰ�����Կ��Ǽ�¼ɾ��Ԫ�ػ���Ԫ�صĸ��������в���
+    note: 如果没有1的提示，正常思路应该是
+    因为删除的元素的空间总可以用且在下一个元素之前，所以考虑记录删除元素或保留元素的个数来进行操作
 */
